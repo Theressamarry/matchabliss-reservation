@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Matcha Bliss</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .team-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .team-card {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 500px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        padding: 20px;
+        overflow: visible;
+      }
+      .info-box {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fffdf0;
+        text-align: center;
+        padding: 10px 30px;
+        transition: transform 0.3s ease;
+        z-index: 2;
+        width: 80%;
+        max-width: 800px;
+      }
+      .info-box h4 {
+        font-size: 24px;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #93b27f;
+      }
+      .info-box p {
+        font-size: 16px;
+        margin-bottom: 0;
+        font-style: italic;
+        color: #8e735b;
+      }
+      .team-card:hover .info-box {
+        transform: translateX(-50%) translateY(-50px);
+      }
+      .card {
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin: 10px;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+      .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 3px solid #c4dfaa;
+      }
+      .card-body {
+        padding: 15px;
+        text-align: center;
+      }
+      .card-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #8e735b;
+        margin-bottom: 0;
+      }
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        top: 50%;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        opacity: 1;
+        transition: background-color 0.3s ease;
+      }
+      .carousel-control-prev:hover,
+      .carousel-control-next:hover {
+        background-color: #e1dca5;
+        border-radius: 50%;
+      }
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-size: 60% 60%;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: invert(1);
+      }
+      .testimonial-card {
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        padding: 20px;
+        width: 280px;
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+      }
+      .testimonial-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+      }
+      .testimonial-card p {
+        font-size: 12px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+      .testimonial-footer {
+        font-weight: bold;
+        color: #4a4a4a;
+        font-size: 0.9rem;
+        margin-top: 5px;
+        text-align: right;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Responsive Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Matcha Bliss</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="tentang.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="paket.html">Bundles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="kontak.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reservasi.html">Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="daftar-reservasi.html"
+                >Reservation Status</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="image-window">
+      <div class="overlay px-3">
+        <section data-aos="fade-up">
+          <h2 class="display-3 display-md-2 display-lg-1 mb-4 text-center">
+            The Heart of Matcha Bliss
+          </h2>
+          <p class="lead mb-4 text-center">
+            Discover the Essence of Matcha Bliss
+          </p>
+        </section>
+      </div>
+    </header>
+
+    <!-- Team (Cafe dan Bakery) -->
+    <section class="container py-5">
+      <h3 class="sub-judul-typing display-5 display-md-4 mb-4 mb-md-5">
+        THE PEOPLE BEHIND THE BLISS
+      </h3>
+      <div class="row g-4" data-aos="fade-up" data-aos-duration="1000">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div
+            class="team-card"
+            style="background-image: url('./elements/sasuke.jpeg')"
+          >
+            <div class="info-box">
+              <h4>Sasuke</h4>
+              <p>Barista Spesialis Matcha</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div
+            class="team-card"
+            style="background-image: url('./elements/eskal.jpeg')"
+          >
+            <div class="info-box">
+              <h4>Escal</h4>
+              <p>Chef Pastry & Dessert Matcha</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div
+            class="team-card"
+            style="background-image: url('./elements/anoch.jpeg')"
+          >
+            <div class="info-box">
+              <h4>Ancoh</h4>
+              <p>Konseptor & Quality Supervisor</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu SLideshow -->
+    <section class="container py-5">
+      <h3
+        class="sub-judul display-5 display-md-4 mb-4 mb-md-5"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
+        OUR MATCHA CREATIONS
+      </h3>
+      <div id="menuCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div
+              class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 justify-content-center"
+            >
+              <!-- Card 1 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/pure.png"
+                    class="card-img-top"
+                    alt="Pure Matcha"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Pure Matcha</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/latte.png"
+                    class="card-img-top"
+                    alt="Matcha Latte"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Matcha Latte</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 3 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/matcha affogato.jpeg"
+                    class="card-img-top"
+                    alt="Matcha Affogato"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Matcha Affogato</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 4 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/ceremonial.png"
+                    class="card-img-top"
+                    alt="Ceremonial Matcha"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Ceremonial Matcha</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 5 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/starwebry.png"
+                    class="card-img-top"
+                    alt="Matcha Strawberry Latte"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Matcha Strawberry Latte</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div
+              class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 g-4 justify-content-center"
+            >
+              <!-- Card 6 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/cupcake.png"
+                    class="card-img-top"
+                    alt="Cupcake Matcha"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Cupcake Matcha</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 7 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/cookies.png"
+                    class="card-img-top"
+                    alt="Cookies Matcha"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Cookies Matcha</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 8 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/cheesecake.png"
+                    class="card-img-top"
+                    alt="Cheesecake Matcha"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Cheesecake Matcha</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 9 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/donat.png"
+                    class="card-img-top"
+                    alt="Donat Matcha"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Donat Matcha</h5>
+                  </div>
+                </div>
+              </div>
+              <!-- Card 10 -->
+              <div class="col">
+                <div class="card h-100">
+                  <img
+                    src="./elements/pie.png"
+                    class="card-img-top"
+                    alt="Pie Matcha"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Pie Matcha</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#menuCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#menuCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="container py-5">
+      <h3
+        class="sub-judul display-5 display-md-4 mb-4 mb-md-5"
+        data-aos="fade-down"
+        data-aos-duration="3000"
+      >
+        BLISSFUL MOMENTS SHARED
+      </h3>
+      <div
+        class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 justify-content-center"
+      >
+        <!-- Orang Pertama -->
+        <div class="col">
+          <div class="testimonial-card h-100">
+            <img
+              src="./elements/florentia.jpeg"
+              alt="Florentia"
+              class="testimonial-img"
+            />
+            <div>
+              <p>
+                “Saya bukan pecinta matcha, tapi setelah ke sini, saya jatuh
+                cinta. Tempatnya bikin tenang dan nyaman banget.”
+              </p>
+              <footer class="testimonial-footer">Florentia</footer>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orang Kedua -->
+        <div class="col">
+          <div class="testimonial-card h-100">
+            <img
+              src="./elements/aria.jpeg"
+              alt="Aria"
+              class="testimonial-img"
+            />
+            <div>
+              <p>
+                “Matcha-nya terasa autentik. Beda dari cafe-cafe biasa. Dan
+                reservasinya bikin semuanya lebih private.”
+              </p>
+              <footer class="testimonial-footer">Aria</footer>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orang Ketiga -->
+        <div class="col">
+          <div class="testimonial-card h-100">
+            <img
+              src="./elements/maybell.jpeg"
+              alt="Maybell"
+              class="testimonial-img"
+            />
+            <div>
+              <p>
+                “Konsepnya keren banget. Cocok buat ngerjain tugas, meet up,
+                atau me-time bareng matcha dan dessert.”
+              </p>
+              <footer class="testimonial-footer">Maybell</footer>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orang Keempat -->
+        <div class="col">
+          <div class="testimonial-card h-100">
+            <img
+              src="./elements/shi yan.jpeg"
+              alt="Shi Yan"
+              class="testimonial-img"
+            />
+            <div>
+              <p>
+                "Matcha Bliss membawa ketenangan setelah hari panjang. Setiap
+                tegukannya sungguh berharga."
+              </p>
+              <footer class="testimonial-footer">Shi Yan</footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 p-2">
+      <div class="container text-center">
+        <p class="mb-0">&copy; 2025 Matcha Bliss. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

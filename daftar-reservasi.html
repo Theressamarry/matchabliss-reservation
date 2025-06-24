@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservation Status - Matcha Bliss</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      #tabel-reservasi {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fffdf0;
+        color: #8e735b;
+      }
+      #tabel-reservasi th {
+        background-color: #93b27f;
+        color: #fffdf0;
+      }
+
+      #tabel-reservasi th,
+      #tabel-reservasi td {
+        padding: 12px;
+        text-align: center;
+      }
+
+      #tabel-reservasi #table-body tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      #tabel-reservasi #table-body tr:hover {
+        background-color: #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar  -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Matcha Bliss</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tentang.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="paket.html">Bundles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="kontak.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reservasi.html">Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="daftar-reservasi.html"
+                >Reservation Status</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="image-window">
+      <div class="overlay px-3">
+        <section data-aos="fade-up">
+          <h2 class="display-3 display-md-2 display-lg-1 mb-4 text-center">
+            Manage Your Reservations
+          </h2>
+          <p class="lead mb-4 text-center">
+            Check your reservation details below. We look forward to welcoming
+            you soon!
+          </p>
+        </section>
+      </div>
+    </header>
+
+    <!-- Booking Overview -->
+    <section class="container mt-5">
+      <h2 class="sub-judul text-center mb-4">Booking Overview</h2>
+      <div class="table-responsive">
+        <table id="tabel-reservasi">
+          <thead id="table-head"></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 p-2">
+      <div class="container text-center">
+        <p class="mb-0">&copy; 2025 Matcha Bliss. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const role = params.get("role");
+
+      let data = JSON.parse(localStorage.getItem("dataReservasi")) || [];
+      const tbody = document.getElementById("table-body");
+
+      // Function to handle the display of sensitive information
+      // based on user role
+      function sensor(text, type) {
+        if (role === "admin") return text;
+        if (!text) return "";
+
+        switch (type) {
+          case "fullName":
+            return text[0] + "*".repeat(text.length - 1);
+          case "email":
+            const [user, domain] = text.split("@");
+            return user[0] + "*".repeat(user.length - 1) + "@" + domain;
+          case "numberPhone":
+            return (
+              text.substring(0, 2) +
+              "*".repeat(text.length - 4) +
+              text.slice(-2)
+            );
+          case "note":
+            return "*".repeat(text.length);
+          default:
+            return "*".repeat(text.length);
+        }
+      }
+
+      // Function to create table header based on user role
+      // and display the data in the table
+      function buatHeaderTabel() {
+        const thead = document.getElementById("table-head");
+        thead.innerHTML = "";
+        const tr = document.createElement("tr");
+        tr.className = "text-center";
+        tr.innerHTML = `
+      <th>Name</th>
+      ${role === "admin" ? "<th>Phone Number</th>" : ""}
+      ${role === "admin" ? "<th>Email</th>" : ""}
+      <th>Date</th>
+      ${role === "admin" ? "<th>Time</th>" : ""}
+      <th>Bundle</th>
+      ${role === "admin" ? "<th>Note</th>" : ""}
+      <th>Status</th>
+      ${role === "admin" ? "<th>Action</th>" : ""}
+    `;
+        thead.appendChild(tr);
+      }
+
+      // Function to display the data in the table body
+      function tampilkanData() {
+        tbody.innerHTML = "";
+        data.forEach((item, index) => {
+          if (!item.status) item.status = "⏳Menunggu";
+          const tr = document.createElement("tr");
+          tr.className = "text-center";
+          tr.innerHTML = `
+        <td>${role === "admin" ? item.fullName : `Guest ${index + 1}`}</td>
+        ${
+          role === "admin"
+            ? `<td>${sensor(item.numberPhone, "numberPhone")}</td>`
+            : ""
+        }
+        ${role === "admin" ? `<td>${sensor(item.email, "email")}</td>` : ""}
+        <td>${item.date}</td>
+        ${role === "admin" ? `<td>${sensor(item.time)}</td>` : ""}
+        <td>${item.package}</td>
+        ${
+          role === "admin" ? `<td>${sensor(item.note || "-", "note")}</td>` : ""
+        }
+        <td>
+          ${
+            role === "admin"
+              ? `
+                <select onchange="ubahStatus(${index}, this.value)" class="form-select form-select-sm">
+                  <option value="⏳Menunggu" ${
+                    item.status === "⏳Menunggu" ? "selected" : ""
+                  }>Menunggu</option>
+                  <option value="✅Dikonfirmasi" ${
+                    item.status === "✅Dikonfirmasi" ? "selected" : ""
+                  }>Dikonfirmasi</option>
+                  <option value="❌Dibatalkan" ${
+                    item.status === "❌Dibatalkan" ? "selected" : ""
+                  }>Dibatalkan</option>
+                  <option value="🎉Selesai" ${
+                    item.status === "🎉Selesai" ? "selected" : ""
+                  }>Selesai</option>
+                </select>
+              `
+              : item.status || "⏳Menunggu"
+          }
+        </td>
+        ${
+          role === "admin"
+            ? `
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editData(${index})">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="hapusData(${index})">Delete</button>
+            </td>
+          `
+            : ""
+        }
+      `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      // Function to delete data from the table
+      // and localStorage
+      function hapusData(index) {
+        if (confirm("Yakin ingin menghapus reservasi ini?")) {
+          data.splice(index, 1);
+          localStorage.setItem("dataReservasi", JSON.stringify(data));
+          tampilkanData();
+        }
+      }
+
+      // Function to update the status of the reservation
+      // and save it to localStorage
+      function ubahStatus(index, statusBaru) {
+        data[index].status = statusBaru;
+        localStorage.setItem("dataReservasi", JSON.stringify(data));
+        tampilkanData();
+      }
+
+      // Function to edit the reservation data
+      // and save it to localStorage
+      // This function prompts the user for new data and updates the reservation
+      function editData(index) {
+        const item = data[index];
+        const fullName = prompt("Full Name:", item.fullName);
+        const numberPhone = prompt("Phone Number:", item.numberPhone);
+        const email = prompt("Email:", item.email);
+        const date = prompt("Date:", item.date);
+        const time = prompt("Time:", item.time);
+        const package = prompt("Bundle:", item.package);
+        const note = prompt("Note:", item.note);
+        if (fullName && date && time && package) {
+          data[index] = {
+            ...item,
+            fullName,
+            numberPhone,
+            email,
+            date,
+            time,
+            package,
+            note,
+          };
+          localStorage.setItem("dataReservasi", JSON.stringify(data));
+          tampilkanData();
+        }
+      }
+
+      buatHeaderTabel();
+      tampilkanData();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

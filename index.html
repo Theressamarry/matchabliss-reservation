@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matcha Bliss - Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+    <style>
+      .branding {
+        background-color: #fffdf0;
+      }
+      .branding-card {
+        background-color: #f4f1e9;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      }
+      .branding-card:hover {
+        background-color: #fffdf0;
+        border: 1px solid #8e735b;
+      }
+      .branding-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 15px;
+        overflow: hidden;
+      }
+      .branding-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+      .image-window {
+        height: 400px;
+        background-image: url("./elements/3885575.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
+        margin-bottom: 0;
+      }
+      .image-window .overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .image-window h2,
+      .image-window p {
+        color: #fffdf0;
+      }
+
+      .detail-map-iframe {
+        border: 0;
+        border-radius: 12px;
+        width: 100%;
+        height: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+      .detail-map-iframe:hover {
+        transform: scale(1.05);
+      }
+      strong {
+        color: #93b27f;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar  -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Matcha Bliss</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tentang.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="paket.html">Bundles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="kontak.html">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="reservasi.html">Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="daftar-reservasi.html"
+                >Reservation Status</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="image-window">
+      <div class="overlay px-3">
+        <section data-aos="fade-up">
+          <h2 class="display-3 display-md-2 display-lg-1 mb-4 text-center">
+            Welcome to Matcha Bliss
+          </h2>
+          <p class="lead mb-4 text-center">Find Bliss in Every Sip of Matcha</p>
+        </section>
+      </div>
+    </header>
+
+    <!-- Branding -->
+    <section class="branding py-5 py-lg-6 text-center">
+      <div class="container">
+        <h2
+          class="sub-judul-typing display-md-4 display-lg-3 text-center mb-1 mb-lg-2"
+        >
+          More Than Just Matcha, This is the Story
+        </h2>
+        <p class="fs-5 fs-md-4 mb-5 mb-lg-6 mx-auto" style="max-width: 800px">
+          Each cup of ours begins with carefully selected matcha leaves from
+          Japan, slowly crafted with love, and served in an atmosphere that
+          invites you to pause.
+        </p>
+
+        <!-- Keunggulan -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+          <!-- Card 1 -->
+          <div class="col">
+            <div class="branding-card h-100 p-3 p-lg-4">
+              <div class="branding-icon">
+                <img
+                  src="./elements/pure-matcha-icon.png"
+                  alt="Pure Matcha Icon"
+                />
+              </div>
+              <h3 class="h5 mb-2 fw-bold">100% Authentic Japanese Matcha</h3>
+              <p class="small mb-0">
+                We only use high-quality matcha—smooth, pure, and packed with
+                flavor
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col">
+            <div class="branding-card h-100 p-3 p-lg-4">
+              <div class="branding-icon">
+                <img
+                  src="./elements/dessert-matcha-icon.png"
+                  alt="Dessert Matcha Icon"
+                />
+              </div>
+              <h3 class="h5 mb-2 fw-bold">Unique Matcha Desserts</h3>
+              <p class="small mb-0">
+                From soufflés to matcha donuts—everything made with exceptional
+                taste
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col">
+            <div class="branding-card h-100 p-3 p-lg-4">
+              <div class="branding-icon">
+                <img src="./elements/sparkle-icon.png" alt="Cozy Icon" />
+              </div>
+              <h3 class="h5 mb-2 fw-bold">Cozy & Tranquil Space</h3>
+              <p class="small mb-0">
+                Designed to make you feel at home—whether alone or with company
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col">
+            <div class="branding-card h-100 p-3 p-lg-4">
+              <div class="branding-icon">
+                <img src="./elements/date-icon.png" alt="Date Icon" />
+              </div>
+              <h3 class="h5 mb-2 fw-bold">Exclusive Experience</h3>
+              <p class="small mb-0">
+                Perfect for me-time or quality time with your loved ones
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Image Window -->
+    <section class="image-window">
+      <div class="overlay px-3">
+        <div class="container">
+          <div data-aos="fade-up">
+            <h2 class="display-5 display-md-4 fs-1 mb-2">
+              Exclusive Matcha Café
+            </h2>
+            <p class="fs-6 mb-4">
+              Book ahead and pick your perfect matcha package!
+            </p>
+            <div
+              class="d-flex flex-column flex-sm-row gap-3 justify-content-center"
+            >
+              <a href="menu.html" class="btn btn-outline-success btn-lg px-4"
+                >View Menu</a
+              >
+              <a href="reservasi.html" class="btn btn-success btn-lg px-4"
+                >Reserve Now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map -->
+    <section class="py-5 py-lg-6">
+      <div class="container">
+        <h2 class="sub-judul-typing text-center mb-4 mb-lg-5">
+          Join Us for a Matcha Escape
+        </h2>
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-10">
+            <iframe
+              class="detail-map-iframe"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.381614479342!2d112.78574977476117!3d-7.333721192674722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fab87edcad15%3A0xb26589947991eea1!2sUniversitas%20Pembangunan%20Nasional%20%E2%80%9CVeteran%E2%80%9D%20Jawa%20Timur!5e1!3m2!1sen!2sid!4v1744535177737!5m2!1sen!2sid"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              data-aos="zoom-in"
+            ></iframe>
+          </div>
+
+          <div class="col-12 text-center mt-4 mt-lg-5">
+            <p class="fs-5">
+              <strong>Opening Hours:</strong> Every day, 10:00 AM – 10:00 PM
+              (WIB)<br />
+              <strong>Contact:</strong> WhatsApp: 0812-3456-7890 | Email:
+              hello@matchabliss.id
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-5 p-2">
+      <div class="container text-center">
+        <p class="mb-0">&copy; 2025 Matcha Bliss. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
